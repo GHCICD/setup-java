@@ -77430,15 +77430,13 @@ const os = __importStar(__nccwpck_require__(70857));
 const xmlbuilder2_1 = __nccwpck_require__(54697);
 const constants = __importStar(__nccwpck_require__(27242));
 const gpg = __importStar(__nccwpck_require__(88343));
-const util_1 = __nccwpck_require__(54527);
-function configureAuthentication() {
+function configureAuthentication(overwriteSettings) {
     return __awaiter(this, void 0, void 0, function* () {
         const id = core.getInput(constants.INPUT_SERVER_ID);
         const username = core.getInput(constants.INPUT_SERVER_USERNAME);
         const password = core.getInput(constants.INPUT_SERVER_PASSWORD);
         const settingsDirectory = core.getInput(constants.INPUT_SETTINGS_PATH) ||
             path.join(os.homedir(), constants.M2_DIR);
-        const overwriteSettings = (0, util_1.getBooleanInput)(constants.INPUT_OVERWRITE_SETTINGS, true);
         const gpgPrivateKey = core.getInput(constants.INPUT_GPG_PRIVATE_KEY) ||
             constants.INPUT_DEFAULT_GPG_PRIVATE_KEY;
         const gpgPassphrase = core.getInput(constants.INPUT_GPG_PASSPHRASE) ||
@@ -77734,7 +77732,7 @@ function isProbablyGradleDaemonProblem(packageManager, error) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DISTRIBUTIONS_ONLY_MAJOR_VERSION = exports.INPUT_MVN_TOOLCHAIN_VENDOR = exports.INPUT_MVN_TOOLCHAIN_ID = exports.MVN_TOOLCHAINS_FILE = exports.MVN_SETTINGS_FILE = exports.M2_DIR = exports.STATE_GPG_PRIVATE_KEY_FINGERPRINT = exports.INPUT_JOB_STATUS = exports.INPUT_CACHE_DEPENDENCY_PATH = exports.INPUT_CACHE = exports.INPUT_DEFAULT_GPG_PASSPHRASE = exports.INPUT_DEFAULT_GPG_PRIVATE_KEY = exports.INPUT_GPG_PASSPHRASE = exports.INPUT_GPG_PRIVATE_KEY = exports.INPUT_OVERWRITE_SETTINGS = exports.INPUT_SETTINGS_PATH = exports.INPUT_SERVER_PASSWORD = exports.INPUT_SERVER_USERNAME = exports.INPUT_SERVER_ID = exports.INPUT_CHECK_LATEST = exports.INPUT_JDK_FILE = exports.INPUT_DISTRIBUTION = exports.INPUT_JAVA_PACKAGE = exports.INPUT_ARCHITECTURE = exports.INPUT_JAVA_VERSION_FILE = exports.INPUT_JAVA_VERSION = exports.MACOS_JAVA_CONTENT_POSTFIX = void 0;
+exports.DISTRIBUTIONS_ONLY_MAJOR_VERSION = exports.INPUT_MVN_TOOLCHAIN_VENDOR = exports.INPUT_MVN_TOOLCHAIN_ID = exports.MVN_TOOLCHAINS_FILE = exports.MVN_SETTINGS_FILE = exports.M2_DIR = exports.STATE_GPG_PRIVATE_KEY_FINGERPRINT = exports.INPUT_JOB_STATUS = exports.INPUT_CACHE_DEPENDENCY_PATH = exports.INPUT_CACHE = exports.INPUT_DEFAULT_GPG_PASSPHRASE = exports.INPUT_DEFAULT_GPG_PRIVATE_KEY = exports.INPUT_GPG_PASSPHRASE = exports.INPUT_GPG_PRIVATE_KEY = exports.INPUT_ADD_TO_PATH = exports.INPUT_UPDATE_JAVA_HOME = exports.INPUT_UPDATE_TOOLCHAINS_ONLY = exports.INPUT_OVERWRITE_SETTINGS = exports.INPUT_SETTINGS_PATH = exports.INPUT_SERVER_PASSWORD = exports.INPUT_SERVER_USERNAME = exports.INPUT_SERVER_ID = exports.INPUT_CHECK_LATEST = exports.INPUT_JDK_FILE = exports.INPUT_DISTRIBUTION = exports.INPUT_JAVA_PACKAGE = exports.INPUT_ARCHITECTURE = exports.INPUT_JAVA_VERSION_FILE = exports.INPUT_JAVA_VERSION = exports.MACOS_JAVA_CONTENT_POSTFIX = void 0;
 exports.MACOS_JAVA_CONTENT_POSTFIX = 'Contents/Home';
 exports.INPUT_JAVA_VERSION = 'java-version';
 exports.INPUT_JAVA_VERSION_FILE = 'java-version-file';
@@ -77748,6 +77746,9 @@ exports.INPUT_SERVER_USERNAME = 'server-username';
 exports.INPUT_SERVER_PASSWORD = 'server-password';
 exports.INPUT_SETTINGS_PATH = 'settings-path';
 exports.INPUT_OVERWRITE_SETTINGS = 'overwrite-settings';
+exports.INPUT_UPDATE_TOOLCHAINS_ONLY = 'update-toolchains-only';
+exports.INPUT_UPDATE_JAVA_HOME = 'update-env-javahome';
+exports.INPUT_ADD_TO_PATH = 'add-to-env-path';
 exports.INPUT_GPG_PRIVATE_KEY = 'gpg-private-key';
 exports.INPUT_GPG_PASSPHRASE = 'gpg-passphrase';
 exports.INPUT_DEFAULT_GPG_PRIVATE_KEY = undefined;
@@ -78051,6 +78052,8 @@ class JavaBase {
         this.architecture = installerOptions.architecture || os_1.default.arch();
         this.packageType = installerOptions.packageType;
         this.checkLatest = installerOptions.checkLatest;
+        this.updateEnvJavaHome = installerOptions.updateEnvJavaHome;
+        this.addToEnvPath = installerOptions.addToEnvPath;
     }
     setupJava() {
         var _a, _b;
@@ -78266,8 +78269,18 @@ class JavaBase {
     }
     setJavaDefault(version, toolPath) {
         const majorVersion = version.split('.')[0];
-        core.exportVariable('JAVA_HOME', toolPath);
-        core.addPath(path_1.default.join(toolPath, 'bin'));
+        if (this.updateEnvJavaHome) {
+            core.exportVariable('JAVA_HOME', toolPath);
+        }
+        else {
+            core.info(`Skip updating env.JAVA_HOME according to ${constants_1.INPUT_UPDATE_JAVA_HOME}`);
+        }
+        if (this.addToEnvPath) {
+            core.addPath(path_1.default.join(toolPath, 'bin'));
+        }
+        else {
+            core.info(`Skip adding to env.PATH according to ${constants_1.INPUT_ADD_TO_PATH}`);
+        }
         core.setOutput('distribution', this.distribution);
         core.setOutput('path', toolPath);
         core.setOutput('version', version);
@@ -80689,6 +80702,10 @@ function run() {
             const cache = core.getInput(constants.INPUT_CACHE);
             const cacheDependencyPath = core.getInput(constants.INPUT_CACHE_DEPENDENCY_PATH);
             const checkLatest = (0, util_1.getBooleanInput)(constants.INPUT_CHECK_LATEST, false);
+            const updateToolchainsOnly = (0, util_1.getBooleanInput)(constants.INPUT_UPDATE_TOOLCHAINS_ONLY, false);
+            const overwriteSettings = (0, util_1.getBooleanInput)(constants.INPUT_OVERWRITE_SETTINGS, !updateToolchainsOnly);
+            const updateEnvJavaHome = (0, util_1.getBooleanInput)(constants.INPUT_UPDATE_JAVA_HOME, !updateToolchainsOnly);
+            const addToEnvPath = (0, util_1.getBooleanInput)(constants.INPUT_ADD_TO_PATH, !updateToolchainsOnly);
             let toolchainIds = core.getMultilineInput(constants.INPUT_MVN_TOOLCHAIN_ID);
             core.startGroup('Installed distributions');
             if (versions.length !== toolchainIds.length) {
@@ -80703,7 +80720,11 @@ function run() {
                 checkLatest,
                 distributionName,
                 jdkFile,
-                toolchainIds
+                toolchainIds,
+                updateToolchainsOnly,
+                overwriteSettings,
+                updateEnvJavaHome,
+                addToEnvPath
             };
             if (!versions.length) {
                 core.debug('java-version input is empty, looking for java-version-file input');
@@ -80721,7 +80742,7 @@ function run() {
             core.endGroup();
             const matchersPath = path.join(__dirname, '..', '..', '.github');
             core.info(`##[add-matcher]${path.join(matchersPath, 'java.json')}`);
-            yield auth.configureAuthentication();
+            yield auth.configureAuthentication(overwriteSettings);
             if (cache && (0, util_1.isCacheFeatureAvailable)()) {
                 yield (0, cache_1.restore)(cache, cacheDependencyPath);
             }
@@ -80734,19 +80755,21 @@ function run() {
 run();
 function installVersion(version, options, toolchainId = 0) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { distributionName, jdkFile, architecture, packageType, checkLatest, toolchainIds } = options;
+        const { distributionName, jdkFile, architecture, packageType, checkLatest, toolchainIds, updateToolchainsOnly, overwriteSettings, updateEnvJavaHome, addToEnvPath } = options;
         const installerOptions = {
+            version,
             architecture,
             packageType,
             checkLatest,
-            version
+            updateEnvJavaHome,
+            addToEnvPath
         };
         const distribution = (0, distribution_factory_1.getJavaDistribution)(distributionName, installerOptions, jdkFile);
         if (!distribution) {
             throw new Error(`No supported distribution was found for input ${distributionName}`);
         }
         const result = yield distribution.setupJava();
-        yield toolchains.configureToolchains(version, distributionName, result.path, toolchainIds[toolchainId]);
+        yield toolchains.configureToolchains(version, distributionName, result.path, overwriteSettings || updateToolchainsOnly, toolchainIds[toolchainId]);
         core.info('');
         core.info('Java configuration:');
         core.info(`  Distribution: ${distributionName}`);
@@ -80804,15 +80827,13 @@ const path = __importStar(__nccwpck_require__(16928));
 const core = __importStar(__nccwpck_require__(37484));
 const io = __importStar(__nccwpck_require__(94994));
 const constants = __importStar(__nccwpck_require__(27242));
-const util_1 = __nccwpck_require__(54527);
 const xmlbuilder2_1 = __nccwpck_require__(54697);
-function configureToolchains(version, distributionName, jdkHome, toolchainId) {
+function configureToolchains(version, distributionName, jdkHome, updateToolchains, toolchainId) {
     return __awaiter(this, void 0, void 0, function* () {
         const vendor = core.getInput(constants.INPUT_MVN_TOOLCHAIN_VENDOR) || distributionName;
         const id = toolchainId || `${vendor}_${version}`;
         const settingsDirectory = core.getInput(constants.INPUT_SETTINGS_PATH) ||
             path.join(os.homedir(), constants.M2_DIR);
-        const overwriteSettings = (0, util_1.getBooleanInput)(constants.INPUT_OVERWRITE_SETTINGS, true);
         yield createToolchainsSettings({
             jdkInfo: {
                 version,
@@ -80821,20 +80842,20 @@ function configureToolchains(version, distributionName, jdkHome, toolchainId) {
                 jdkHome
             },
             settingsDirectory,
-            overwriteSettings
+            updateToolchains
         });
     });
 }
 exports.configureToolchains = configureToolchains;
-function createToolchainsSettings({ jdkInfo, settingsDirectory, overwriteSettings }) {
+function createToolchainsSettings({ jdkInfo, settingsDirectory, updateToolchains }) {
     return __awaiter(this, void 0, void 0, function* () {
-        core.info(`Creating ${constants.MVN_TOOLCHAINS_FILE} for JDK version ${jdkInfo.version} from ${jdkInfo.vendor}`);
+        core.info(`Adding a toolchain entry in ${constants.MVN_TOOLCHAINS_FILE} for JDK version ${jdkInfo.version} from ${jdkInfo.vendor}`);
         // when an alternate m2 location is specified use only that location (no .m2 directory)
         // otherwise use the home/.m2/ path
         yield io.mkdirP(settingsDirectory);
         const originalToolchains = yield readExistingToolchainsFile(settingsDirectory);
         const updatedToolchains = generateToolchainDefinition(originalToolchains, jdkInfo.version, jdkInfo.vendor, jdkInfo.id, jdkInfo.jdkHome);
-        yield writeToolchainsFileToDisk(settingsDirectory, updatedToolchains, overwriteSettings);
+        yield writeToolchainsFileToDisk(settingsDirectory, updatedToolchains, updateToolchains);
     });
 }
 exports.createToolchainsSettings = createToolchainsSettings;
@@ -80900,18 +80921,18 @@ function readExistingToolchainsFile(directory) {
         return '';
     });
 }
-function writeToolchainsFileToDisk(directory, settings, overwriteSettings) {
+function writeToolchainsFileToDisk(directory, settings, updateToolchains) {
     return __awaiter(this, void 0, void 0, function* () {
         const location = path.join(directory, constants.MVN_TOOLCHAINS_FILE);
-        const settingsExists = fs.existsSync(location);
-        if (settingsExists && overwriteSettings) {
-            core.info(`Overwriting existing file ${location}`);
+        const toolchainsExists = fs.existsSync(location);
+        if (toolchainsExists && updateToolchains) {
+            core.info(`Updating existing file ${location}`);
         }
-        else if (!settingsExists) {
-            core.info(`Writing to ${location}`);
+        else if (!toolchainsExists) {
+            core.info(`Creating file ${location}`);
         }
         else {
-            core.info(`Skipping generation of ${location} because file already exists and overwriting is not enabled`);
+            core.info(`Skipping update of ${location} since file already exists and updating is not enabled`);
             return;
         }
         return fs.writeFileSync(location, settings, {
