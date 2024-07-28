@@ -3,13 +3,14 @@ name: Basic validation
 on:
   push:
     branches:
-      - main
+      - main*
       - releases/*
     paths-ignore:
       - '**.md'
   pull_request:
     paths-ignore:
       - '**.md'
+  workflow_dispatch:
 
 jobs:
   call-basic-validation:
