@@ -48,7 +48,9 @@ describe('GraalVMDistribution', () => {
     version: '17',
     architecture: 'x64',
     packageType: 'jdk',
-    checkLatest: false
+    checkLatest: false,
+    updateEnvJavaHome: true,
+    addToEnvPath: true
   };
 
   beforeEach(() => {

@@ -73,7 +73,9 @@ describe('findInToolcache', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: actualJavaVersion, path: javaPath}
     ],
@@ -82,7 +84,9 @@ describe('findInToolcache', () => {
         version: '11.0',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: actualJavaVersion, path: javaPath}
     ],
@@ -91,7 +95,9 @@ describe('findInToolcache', () => {
         version: '11.0.8',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: actualJavaVersion, path: javaPath}
     ],
@@ -100,7 +106,9 @@ describe('findInToolcache', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: true
+        checkLatest: true,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: actualJavaVersion, path: javaPath}
     ],
@@ -109,7 +117,9 @@ describe('findInToolcache', () => {
         version: '11.0',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: true
+        checkLatest: true,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: actualJavaVersion, path: javaPath}
     ],
@@ -118,7 +128,9 @@ describe('findInToolcache', () => {
         version: '11.0.8',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: true
+        checkLatest: true,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: actualJavaVersion, path: javaPath}
     ],
@@ -127,7 +139,9 @@ describe('findInToolcache', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       null
     ],
@@ -136,7 +150,9 @@ describe('findInToolcache', () => {
         version: '8',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       null
     ],
@@ -145,7 +161,9 @@ describe('findInToolcache', () => {
         version: '11',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       null
     ],
@@ -154,7 +172,9 @@ describe('findInToolcache', () => {
         version: '11',
         architecture: 'x86',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       null
     ]
@@ -217,7 +237,9 @@ describe('findInToolcache', () => {
         version: input,
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       const foundVersion = mockJavaBase['findInToolcache']();
       expect(foundVersion).toEqual({
@@ -307,7 +329,9 @@ describe('setupJava', () => {
         version: '11',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: installedJavaVersion, path: javaPath}
     ],
@@ -316,7 +340,9 @@ describe('setupJava', () => {
         version: '11.0',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: installedJavaVersion, path: javaPath}
     ],
@@ -325,12 +351,21 @@ describe('setupJava', () => {
         version: '11.0.8',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: installedJavaVersion, path: javaPath}
     ],
     [
-      {version: '11', architecture: '', packageType: 'jdk', checkLatest: false},
+      {
+        version: '11',
+        architecture: '',
+        packageType: 'jdk',
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
+      },
       {version: installedJavaVersion, path: javaPath}
     ]
   ])('should find java locally for %s', async (input, expected) => {
@@ -355,7 +390,9 @@ describe('setupJava', () => {
         version: '11',
         architecture: 'x86',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {
         path: path.join('toolcache', 'Java_Empty_jre', '11.0.9', 'x86'),
@@ -367,7 +404,9 @@ describe('setupJava', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {
         path: path.join('toolcache', 'Java_Empty_jdk', '11.0.9', 'x64'),
@@ -379,7 +418,9 @@ describe('setupJava', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {
         path: path.join('toolcache', 'Java_Empty_jre', '11.0.9', 'x64'),
@@ -387,7 +428,14 @@ describe('setupJava', () => {
       }
     ],
     [
-      {version: '11', architecture: '', packageType: 'jre', checkLatest: false},
+      {
+        version: '11',
+        architecture: '',
+        packageType: 'jre',
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
+      },
       {
         path: path.join('toolcache', 'Java_Empty_jre', '11.0.9', 'x86'),
         version: '11.0.9'
@@ -427,7 +475,9 @@ describe('setupJava', () => {
         version: '11.0.9',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: true
+        checkLatest: true,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: '11.0.9', path: javaPathInstalled}
     ],
@@ -436,7 +486,9 @@ describe('setupJava', () => {
         version: '11.0.9',
         architecture: '',
         packageType: 'jdk',
-        checkLatest: true
+        checkLatest: true,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: '11.0.9', path: javaPathInstalled}
     ]
@@ -470,7 +522,9 @@ describe('setupJava', () => {
         version: '11',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: true
+        checkLatest: true,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: actualJavaVersion, path: javaPathInstalled}
     ],
@@ -479,7 +533,9 @@ describe('setupJava', () => {
         version: '11.0',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: true
+        checkLatest: true,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: actualJavaVersion, path: javaPathInstalled}
     ],
@@ -488,12 +544,21 @@ describe('setupJava', () => {
         version: '11.0.x',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: true
+        checkLatest: true,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       {version: actualJavaVersion, path: javaPathInstalled}
     ],
     [
-      {version: '11', architecture: '', packageType: 'jdk', checkLatest: true},
+      {
+        version: '11',
+        architecture: '',
+        packageType: 'jdk',
+        checkLatest: true,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
+      },
       {version: actualJavaVersion, path: javaPathInstalled}
     ]
   ])(
@@ -524,7 +589,9 @@ describe('setupJava', () => {
         version: '15',
         architecture: 'x86',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       }
     ],
     [
@@ -532,7 +599,9 @@ describe('setupJava', () => {
         version: '11.0.7',
         architecture: 'x64',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       }
     ]
   ])('should throw an error for version not found for %s', async input => {
@@ -578,7 +647,9 @@ describe('createVersionNotFoundError', () => {
       version: '17.0.5',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
 
     const error = (mockJavaBase as any).createVersionNotFoundError('17.0.5');
@@ -596,7 +667,9 @@ describe('createVersionNotFoundError', () => {
       version: '17.0.5',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
 
     const availableVersions = ['11.0.1', '11.0.2', '17.0.1', '17.0.2'];
@@ -621,7 +694,9 @@ describe('createVersionNotFoundError', () => {
       version: '17.0.5',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
 
     // Create 60 versions to test truncation
@@ -641,7 +716,9 @@ describe('createVersionNotFoundError', () => {
       version: '17.0.5',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
 
     const availableVersions = ['11.0.1', '11.0.2'];
@@ -681,7 +758,9 @@ describe('getToolcacheVersionName', () => {
       version: inputVersion,
       packageType: 'jdk',
       architecture: 'x64',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     const actual = mockJavaBase['getToolcacheVersionName'](input.version);
     expect(actual).toBe(expected);

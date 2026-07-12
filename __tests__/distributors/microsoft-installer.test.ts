@@ -15,7 +15,9 @@ describe('findPackageForDownload', () => {
       version: '',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
 
     spyGetManifestFromRepo = jest.spyOn(httpm.HttpClient.prototype, 'getJson');
@@ -115,7 +117,9 @@ describe('findPackageForDownload', () => {
         version,
         architecture: '', // to get default value
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
 
       const result = await distro['findPackageForDownload'](version);
@@ -141,7 +145,9 @@ describe('findPackageForDownload', () => {
         version,
         architecture: '', // to get default value
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
 
       const result = await distro['findPackageForDownload'](version);
@@ -167,7 +173,9 @@ describe('findPackageForDownload', () => {
         version,
         architecture: '', // to get default value
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
 
       const result = await distro['findPackageForDownload'](version);

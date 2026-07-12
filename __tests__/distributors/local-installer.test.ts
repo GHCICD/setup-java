@@ -111,7 +111,9 @@ describe('setupJava', () => {
       version: actualJavaVersion,
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     };
     const jdkFile = 'not_existing_one';
     const expected = {
@@ -135,7 +137,9 @@ describe('setupJava', () => {
       version: actualJavaVersion,
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     };
     const jdkFile = undefined;
     const expected = {
@@ -159,7 +163,9 @@ describe('setupJava', () => {
       version: '11.0.289',
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     };
     const jdkFile = expectedJdkFile;
     const expected = {
@@ -186,7 +192,9 @@ describe('setupJava', () => {
       version: '11.0.289',
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     };
     const jdkFile = 'not_existing_one';
     const expected = {
@@ -224,7 +232,9 @@ describe('setupJava', () => {
       version: actualJavaVersion,
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     };
     const jdkFile = 'not_existing_one';
     const expected = {
@@ -267,7 +277,9 @@ describe('setupJava', () => {
       version: '11.0.289',
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     };
     const jdkFile = expectedJdkFile;
     const expected = {
@@ -312,7 +324,9 @@ describe('setupJava', () => {
         version: '8.0.289',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'otherJdkFile'
     ],
@@ -321,7 +335,9 @@ describe('setupJava', () => {
         version: '11.0.289',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'otherJdkFile'
     ],
@@ -330,7 +346,9 @@ describe('setupJava', () => {
         version: '12.0.289',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'otherJdkFile'
     ],
@@ -339,7 +357,9 @@ describe('setupJava', () => {
         version: '11.1.11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'not_existing_one'
     ]
@@ -360,7 +380,9 @@ describe('setupJava', () => {
         version: '8.0.289',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       ''
     ],
@@ -369,7 +391,9 @@ describe('setupJava', () => {
         version: '7.0.289',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       undefined
     ],
@@ -378,7 +402,9 @@ describe('setupJava', () => {
         version: '11.0.289',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       undefined
     ]

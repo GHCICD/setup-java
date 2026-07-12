@@ -40,7 +40,9 @@ describe('getAvailableVersions', () => {
         version: '16',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot,
       'os=mac&architecture=x64&image_type=jdk&release_type=ga&jvm_impl=hotspot&page_size=20&page=0'
@@ -50,7 +52,9 @@ describe('getAvailableVersions', () => {
         version: '16',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot,
       'os=mac&architecture=x86&image_type=jdk&release_type=ga&jvm_impl=hotspot&page_size=20&page=0'
@@ -60,7 +64,9 @@ describe('getAvailableVersions', () => {
         version: '16',
         architecture: 'x64',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot,
       'os=mac&architecture=x64&image_type=jre&release_type=ga&jvm_impl=hotspot&page_size=20&page=0'
@@ -70,7 +76,9 @@ describe('getAvailableVersions', () => {
         version: '16-ea',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot,
       'os=mac&architecture=x64&image_type=jdk&release_type=ea&jvm_impl=hotspot&page_size=20&page=0'
@@ -116,7 +124,9 @@ describe('getAvailableVersions', () => {
         version: '8',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot
     );
@@ -140,7 +150,9 @@ describe('getAvailableVersions', () => {
         version: '8',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot
     );
@@ -164,7 +176,9 @@ describe('getAvailableVersions', () => {
           version: '8',
           architecture: 'x64',
           packageType: packageType,
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         },
         impl
       );
@@ -188,7 +202,9 @@ describe('getAvailableVersions', () => {
         version: '17',
         architecture: '',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       };
 
       const expectedParameters = `os=mac&architecture=${distroArch}&image_type=jdk&release_type=ga&jvm_impl=hotspot&page_size=20&page=0`;
@@ -224,7 +240,9 @@ describe('findPackageForDownload', () => {
         version: '8',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot
     );
@@ -239,7 +257,9 @@ describe('findPackageForDownload', () => {
         version: '9.0.8',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot
     );
@@ -255,7 +275,9 @@ describe('findPackageForDownload', () => {
         version: '7.x',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot
     );
@@ -271,7 +293,9 @@ describe('findPackageForDownload', () => {
         version: '8',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       TemurinImplementation.Hotspot
     );

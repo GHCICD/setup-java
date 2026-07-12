@@ -41,7 +41,9 @@ describe('getAvailableVersions', () => {
       version: '17',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     const availableVersions = await distribution['getAvailableVersions']();
     expect(availableVersions).not.toBeNull();
@@ -65,7 +67,9 @@ describe('findPackageForDownload', () => {
       version: input,
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => manifestData as any;
     const resolvedVersion = await distribution['findPackageForDownload'](input);
@@ -79,7 +83,9 @@ describe('findPackageForDownload', () => {
         version: input,
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       distribution['getAvailableVersions'] = async () => manifestData as any;
       const resolvedVersion =
@@ -100,7 +106,9 @@ describe('findPackageForDownload', () => {
       version: '8.0.452',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => manifestData as any;
     await expect(distribution['findPackageForDownload']('8.x')).rejects.toThrow(
@@ -113,7 +121,9 @@ describe('findPackageForDownload', () => {
       version: '8',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => [];
     await expect(distribution['findPackageForDownload']('8')).rejects.toThrow(

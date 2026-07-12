@@ -37,7 +37,9 @@ describe('getAvailableVersions', () => {
         version: '11.x',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'bundle-type=jdk&bitness=32&arch=x86&build-type=all'
     ],
@@ -46,7 +48,9 @@ describe('getAvailableVersions', () => {
         version: '11-ea',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'bundle-type=jdk&bitness=32&arch=x86&build-type=ea'
     ],
@@ -55,7 +59,9 @@ describe('getAvailableVersions', () => {
         version: '16.0.2',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'bundle-type=jdk&bitness=64&arch=x86&build-type=all'
     ],
@@ -64,7 +70,9 @@ describe('getAvailableVersions', () => {
         version: '16.0.2',
         architecture: 'x64',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'bundle-type=jre&bitness=64&arch=x86&build-type=all'
     ],
@@ -73,7 +81,9 @@ describe('getAvailableVersions', () => {
         version: '8',
         architecture: 'armv7',
         packageType: 'jdk+fx',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'bundle-type=jdk-full&bitness=32&arch=arm&build-type=all'
     ],
@@ -82,7 +92,9 @@ describe('getAvailableVersions', () => {
         version: '8',
         architecture: 'aarch64',
         packageType: 'jre+fx',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'bundle-type=jre-full&bitness=64&arch=arm&build-type=all'
     ]
@@ -118,7 +130,9 @@ describe('getAvailableVersions', () => {
         version: '17',
         architecture: '', // to get default value
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
 
       const additionalParams =
@@ -140,7 +154,9 @@ describe('getAvailableVersions', () => {
       version: '11',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     const availableVersions = await distribution['getAvailableVersions']();
     expect(availableVersions).toEqual(manifestData);
@@ -161,7 +177,9 @@ describe('getArchitectureOptions', () => {
         architecture: input,
         checkLatest: false,
         packageType: '',
-        version: ''
+        version: '',
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
 
       expect(distributions['getArchitectureOptions']()).toEqual(expected);
@@ -173,7 +191,9 @@ describe('getArchitectureOptions', () => {
       architecture: input,
       checkLatest: false,
       packageType: '',
-      version: ''
+      version: '',
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
 
     expect(() => distributions['getArchitectureOptions']()).toThrow(
@@ -190,7 +210,9 @@ describe('findPackageForDownload', () => {
       version: '',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => manifestData;
   });
@@ -224,7 +246,9 @@ describe('getPlatformOption', () => {
     architecture: 'x64',
     version: '11',
     packageType: 'jdk',
-    checkLatest: false
+    checkLatest: false,
+    updateEnvJavaHome: true,
+    addToEnvPath: true
   });
 
   it.each([
@@ -254,7 +278,9 @@ describe('convertVersionToSemver', () => {
     architecture: 'x64',
     version: '11',
     packageType: 'jdk',
-    checkLatest: false
+    checkLatest: false,
+    updateEnvJavaHome: true,
+    addToEnvPath: true
   });
 
   it.each([

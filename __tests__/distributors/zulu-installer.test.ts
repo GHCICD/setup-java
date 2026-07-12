@@ -43,7 +43,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       '?os=macos&ext=tar.gz&bundle_type=jdk&javafx=false&arch=x86&hw_bitness=32&release_status=ga'
     ],
@@ -52,7 +54,9 @@ describe('getAvailableVersions', () => {
         version: '11-ea',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       '?os=macos&ext=tar.gz&bundle_type=jdk&javafx=false&arch=x86&hw_bitness=32&release_status=ea'
     ],
@@ -61,7 +65,9 @@ describe('getAvailableVersions', () => {
         version: '8',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       '?os=macos&ext=tar.gz&bundle_type=jdk&javafx=false&arch=x86&hw_bitness=64&release_status=ga'
     ],
@@ -70,7 +76,9 @@ describe('getAvailableVersions', () => {
         version: '8',
         architecture: 'x64',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       '?os=macos&ext=tar.gz&bundle_type=jre&javafx=false&arch=x86&hw_bitness=64&release_status=ga'
     ],
@@ -79,7 +87,9 @@ describe('getAvailableVersions', () => {
         version: '8',
         architecture: 'x64',
         packageType: 'jdk+fx',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       '?os=macos&ext=tar.gz&bundle_type=jdk&javafx=true&arch=x86&hw_bitness=64&release_status=ga&features=fx'
     ],
@@ -88,7 +98,9 @@ describe('getAvailableVersions', () => {
         version: '8',
         architecture: 'x64',
         packageType: 'jre+fx',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       '?os=macos&ext=tar.gz&bundle_type=jre&javafx=true&arch=x86&hw_bitness=64&release_status=ga&features=fx'
     ],
@@ -97,7 +109,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'arm64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       '?os=macos&ext=tar.gz&bundle_type=jdk&javafx=false&arch=arm&hw_bitness=64&release_status=ga'
     ],
@@ -106,7 +120,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'arm',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       '?os=macos&ext=tar.gz&bundle_type=jdk&javafx=false&arch=arm&hw_bitness=&release_status=ga'
     ]
@@ -139,7 +155,9 @@ describe('getAvailableVersions', () => {
         version: '17',
         architecture: '', // to get default value
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       distribution['getPlatformOption'] = () => 'macos';
       const buildUrl = `https://api.azul.com/zulu/download/community/v1.0/bundles/?os=macos&ext=tar.gz&bundle_type=jdk&javafx=false&arch=${distroArch.arch}&hw_bitness=${distroArch.bitness}&release_status=ga`;
@@ -156,7 +174,9 @@ describe('getAvailableVersions', () => {
       version: '11',
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     const availableVersions = await distribution['getAvailableVersions']();
     expect(availableVersions).toHaveLength(manifestData.length);
@@ -174,7 +194,9 @@ describe('getArchitectureOptions', () => {
       version: '11',
       architecture: input.architecture,
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     expect(distribution['getArchitectureOptions']()).toEqual(expected);
   });
@@ -198,7 +220,9 @@ describe('findPackageForDownload', () => {
       version: input,
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => manifestData;
     const result = await distribution['findPackageForDownload'](
@@ -212,7 +236,9 @@ describe('findPackageForDownload', () => {
       version: '',
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => manifestData;
     const result = await distribution['findPackageForDownload']('11.0.5');
@@ -226,7 +252,9 @@ describe('findPackageForDownload', () => {
       version: '18',
       architecture: 'x86',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => manifestData;
     await expect(

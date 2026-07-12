@@ -37,7 +37,9 @@ describe('getAvailableVersions', () => {
         version: '16',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'os=mac&architecture=x64&image_type=jdk&release_type=ga&jvm_impl=openj9&page_size=20&page=0'
     ],
@@ -46,7 +48,9 @@ describe('getAvailableVersions', () => {
         version: '16',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'os=mac&architecture=x86&image_type=jdk&release_type=ga&jvm_impl=openj9&page_size=20&page=0'
     ],
@@ -55,7 +59,9 @@ describe('getAvailableVersions', () => {
         version: '16',
         architecture: 'x64',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'os=mac&architecture=x64&image_type=jre&release_type=ga&jvm_impl=openj9&page_size=20&page=0'
     ],
@@ -64,7 +70,9 @@ describe('getAvailableVersions', () => {
         version: '16',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       'os=mac&architecture=x64&image_type=jdk&release_type=ga&jvm_impl=openj9&page_size=20&page=0'
     ]
@@ -104,7 +112,9 @@ describe('getAvailableVersions', () => {
       version: '8',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     const availableVersions = await distribution['getAvailableVersions']();
     expect(availableVersions).not.toBeNull();
@@ -125,7 +135,9 @@ describe('getAvailableVersions', () => {
       version: '8',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
 
     await distribution['getAvailableVersions']();
@@ -144,7 +156,9 @@ describe('getAvailableVersions', () => {
       version: '8',
       architecture: 'x64',
       packageType: packageType,
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
 
     // @ts-ignore - because it is protected
@@ -165,7 +179,9 @@ describe('findPackageForDownload', () => {
       version: '8',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => manifestData as any;
     const resolvedVersion = await distribution['findPackageForDownload'](input);
@@ -177,7 +193,9 @@ describe('findPackageForDownload', () => {
       version: '9.0.8',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => manifestData as any;
     await expect(
@@ -190,7 +208,9 @@ describe('findPackageForDownload', () => {
       version: '7.x',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => manifestData as any;
     await expect(distribution['findPackageForDownload']('7.x')).rejects.toThrow(
@@ -203,7 +223,9 @@ describe('findPackageForDownload', () => {
       version: '8',
       architecture: 'x64',
       packageType: 'jdk',
-      checkLatest: false
+      checkLatest: false,
+      updateEnvJavaHome: true,
+      addToEnvPath: true
     });
     distribution['getAvailableVersions'] = async () => [];
     await expect(distribution['findPackageForDownload']('8')).rejects.toThrow(
@@ -218,7 +240,9 @@ describe('findPackageForDownload', () => {
         version: '8',
         architecture: arch,
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       distribution['getAvailableVersions'] = async () => manifestData as any;
       const resolvedVersion = await distribution['findPackageForDownload']('8');
@@ -233,7 +257,9 @@ describe('findPackageForDownload', () => {
         version: '8',
         architecture: arch,
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       distribution['getAvailableVersions'] = async () => [];
       await expect(distribution['findPackageForDownload']('8')).rejects.toThrow(
@@ -249,7 +275,9 @@ describe('findPackageForDownload', () => {
         version: version,
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       distribution['getAvailableVersions'] = async () => manifestData as any;
       await expect(
@@ -277,7 +305,9 @@ describe('findPackageForDownload', () => {
         version: '8',
         architecture: 'x64',
         packageType: packageType,
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       distribution['getAvailableVersions'] = async () => manifestData as any;
       await expect(distribution['findPackageForDownload']('8')).rejects.toThrow(
@@ -293,7 +323,9 @@ describe('findPackageForDownload', () => {
         version: '8',
         architecture: 'x64',
         packageType: packageType,
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       distribution['getAvailableVersions'] = async () => manifestData as any;
       const resolvedVersion = await distribution['findPackageForDownload']('8');
@@ -308,7 +340,9 @@ describe('findPackageForDownload', () => {
           version: 'jdk-16.0.2+7_openj9-0.27.1',
           architecture: 'x64',
           packageType: 'jdk',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         })
     ).toThrow(
       "The string 'jdk-16.0.2+7_openj9-0.27.1' is not valid SemVer notation for a Java version. Please check README file for code snippets and more detailed information"

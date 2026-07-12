@@ -62,7 +62,9 @@ describe('getAvailableVersions', () => {
         version: version,
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
 
       mockPlatform(distribution, 'linux');
@@ -97,7 +99,9 @@ describe('getAvailableVersions', () => {
           version: jdkVersion,
           architecture: arch,
           packageType: 'jdk',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         });
         mockPlatform(distribution, platform);
 
@@ -231,7 +235,9 @@ describe('getAvailableVersions', () => {
           version: version,
           architecture: arch,
           packageType: packageType,
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         });
         mockPlatform(distribution, platform);
 
@@ -265,7 +271,9 @@ describe('getAvailableVersions', () => {
           version: version,
           architecture: arch,
           packageType: 'jdk',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         });
         mockPlatform(distribution, platform);
 
@@ -285,7 +293,9 @@ describe('getAvailableVersions', () => {
         version: jdkVersion,
         architecture: arch,
         packageType: 'jdk+fx',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       mockPlatform(distribution, platform);
       await expect(

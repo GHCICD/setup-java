@@ -47,7 +47,7 @@ describe('toolchains tests', () => {
     await toolchains.createToolchainsSettings({
       jdkInfo,
       settingsDirectory: altHome,
-      overwriteSettings: true
+      updateToolchains: true
     });
 
     expect(fs.existsSync(m2Dir)).toBe(false);
@@ -96,7 +96,7 @@ describe('toolchains tests', () => {
     await toolchains.createToolchainsSettings({
       jdkInfo,
       settingsDirectory: m2Dir,
-      overwriteSettings: true
+      updateToolchains: true
     });
 
     expect(fs.existsSync(m2Dir)).toBe(true);
@@ -176,7 +176,7 @@ describe('toolchains tests', () => {
     await toolchains.createToolchainsSettings({
       jdkInfo,
       settingsDirectory: m2Dir,
-      overwriteSettings: true
+      updateToolchains: true
     });
 
     expect(fs.existsSync(m2Dir)).toBe(true);
@@ -231,7 +231,7 @@ describe('toolchains tests', () => {
     await toolchains.createToolchainsSettings({
       jdkInfo,
       settingsDirectory: m2Dir,
-      overwriteSettings: false
+      updateToolchains: false
     });
 
     expect(fs.existsSync(m2Dir)).toBe(true);
@@ -281,11 +281,13 @@ describe('toolchains tests', () => {
     const id = 'temurin_17';
     const jdkHome =
       '/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.1-12/x64';
+    const updateToolchains = true;
 
     await toolchains.configureToolchains(
       version,
       distributionName,
       jdkHome,
+      updateToolchains,
       undefined
     );
 

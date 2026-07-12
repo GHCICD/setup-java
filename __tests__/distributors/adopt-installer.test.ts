@@ -44,7 +44,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot,
       'os=mac&architecture=x64&image_type=jdk&release_type=ga&jvm_impl=hotspot&page_size=20&page=0'
@@ -54,7 +56,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot,
       'os=mac&architecture=x86&image_type=jdk&release_type=ga&jvm_impl=hotspot&page_size=20&page=0'
@@ -64,7 +68,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot,
       'os=mac&architecture=x64&image_type=jre&release_type=ga&jvm_impl=hotspot&page_size=20&page=0'
@@ -74,7 +80,9 @@ describe('getAvailableVersions', () => {
         version: '11-ea',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot,
       'os=mac&architecture=x64&image_type=jdk&release_type=ea&jvm_impl=hotspot&page_size=20&page=0'
@@ -84,7 +92,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.OpenJ9,
       'os=mac&architecture=x64&image_type=jdk&release_type=ga&jvm_impl=openj9&page_size=20&page=0'
@@ -94,7 +104,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x86',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.OpenJ9,
       'os=mac&architecture=x86&image_type=jdk&release_type=ga&jvm_impl=openj9&page_size=20&page=0'
@@ -104,7 +116,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jre',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.OpenJ9,
       'os=mac&architecture=x64&image_type=jre&release_type=ga&jvm_impl=openj9&page_size=20&page=0'
@@ -114,7 +128,9 @@ describe('getAvailableVersions', () => {
         version: '11-ea',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.OpenJ9,
       'os=mac&architecture=x64&image_type=jdk&release_type=ea&jvm_impl=openj9&page_size=20&page=0'
@@ -160,7 +176,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot
     );
@@ -184,7 +202,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot
     );
@@ -210,7 +230,9 @@ describe('getAvailableVersions', () => {
           version: '11',
           architecture: 'x64',
           packageType: packageType,
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         },
         impl
       );
@@ -234,7 +256,9 @@ describe('getAvailableVersions', () => {
         version: '17',
         architecture: '', // to get default value
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       };
 
       const expectedParameters = `os=mac&architecture=${distroArch}&image_type=jdk&release_type=ga&jvm_impl=hotspot&page_size=20&page=0`;
@@ -274,7 +298,9 @@ describe('findPackageForDownload', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot,
       temurinDistribution
@@ -307,7 +333,9 @@ describe('findPackageForDownload', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot
     );
@@ -327,7 +355,9 @@ describe('findPackageForDownload', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot
     );
@@ -348,7 +378,9 @@ describe('findPackageForDownload', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot
     );
@@ -369,7 +401,9 @@ describe('findPackageForDownload', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       },
       AdoptImplementation.Hotspot
     );

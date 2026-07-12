@@ -42,7 +42,9 @@ describe('getAvailableVersions', () => {
         version: '11',
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       mockPlatform(distribution, 'linux');
 
@@ -57,7 +59,9 @@ describe('getAvailableVersions', () => {
           version: '16',
           architecture: 'x64',
           packageType: 'jdk',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         },
         'macos',
         6
@@ -67,7 +71,9 @@ describe('getAvailableVersions', () => {
           version: '16',
           architecture: 'x86',
           packageType: 'jdk',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         },
         'macos',
         0
@@ -77,7 +83,9 @@ describe('getAvailableVersions', () => {
           version: '16',
           architecture: 'x64',
           packageType: 'jre',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         },
         'macos',
         0
@@ -87,7 +95,9 @@ describe('getAvailableVersions', () => {
           version: '16',
           architecture: 'x64',
           packageType: 'jdk',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         },
         'linux',
         6
@@ -97,7 +107,9 @@ describe('getAvailableVersions', () => {
           version: '18',
           architecture: 'x64',
           packageType: 'jdk',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         },
         'windows',
         6
@@ -107,7 +119,9 @@ describe('getAvailableVersions', () => {
           version: '18',
           architecture: 'x64',
           packageType: 'jre',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         },
         'windows',
         1
@@ -151,7 +165,9 @@ describe('getAvailableVersions', () => {
         version,
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       mockPlatform(distribution, platform);
 
@@ -167,7 +183,9 @@ describe('getAvailableVersions', () => {
         version,
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       mockPlatform(distribution, 'linux');
 
@@ -182,7 +200,9 @@ describe('getAvailableVersions', () => {
         version,
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       mockPlatform(distribution, 'linux');
 
@@ -197,7 +217,9 @@ describe('getAvailableVersions', () => {
         version,
         architecture: 'x64',
         packageType: 'jdk',
-        checkLatest: false
+        checkLatest: false,
+        updateEnvJavaHome: true,
+        addToEnvPath: true
       });
       mockPlatform(distribution, 'linux');
 
@@ -220,7 +242,9 @@ describe('getAvailableVersions', () => {
           version: '17',
           architecture: '', // to get default value
           packageType: 'jdk',
-          checkLatest: false
+          checkLatest: false,
+          updateEnvJavaHome: true,
+          addToEnvPath: true
         });
         mockPlatform(distribution, 'macos');
 
