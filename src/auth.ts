@@ -8,7 +8,6 @@ import * as os from 'os';
 import {create as xmlCreate} from 'xmlbuilder2';
 import * as constants from './constants';
 import * as gpg from './gpg';
-import {getBooleanInput} from './util';
 
 export async function configureAuthentication(overwriteSettings: boolean) {
   const id = core.getInput(constants.INPUT_SERVER_ID);
