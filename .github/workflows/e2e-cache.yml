@@ -3,7 +3,7 @@ name: Validate cache
 on:
   push:
     branches:
-      - main
+      - main*
       - releases/*
     paths-ignore:
       - '**.md'
